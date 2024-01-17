@@ -9,6 +9,7 @@ export default class CommentList extends Component {
   // 给组件类指定属性
   static propTypes = {
     comments: PropTypes.array.isRequired,
+    deleteComment: PropTypes.func.isRequired
   }
 
   render () {
@@ -22,7 +23,7 @@ export default class CommentList extends Component {
         <h2 style={{display}}>暂无评论，点击左侧添加评论！！！</h2>
         <ul className="list-group">
           {
-            comments.map((c, index) => <CommentItem comment={c} key={index} index={index}/>)
+            comments.map((c, index) => <CommentItem comment={c} key={index} index={index} deleteComment={deleteComment}/>)
           }
         </ul>
       </div>

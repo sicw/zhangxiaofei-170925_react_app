@@ -9,14 +9,17 @@ export default class CommentItem extends Component {
   static propTypes = {
     comment: PropTypes.object.isRequired,
     index: PropTypes.number.isRequired,
+    deleteComment: PropTypes.func.isRequired
   }
 
   handleClick = () => {
-    const {comment, index} = this.props
+    const {comment, index, deleteComment} = this.props
     // 提示
     if(window.confirm(`确定删除${comment.username}的评论吗?`)) {
-      // 确定后删除
-      PubSub.publish('deleteComment', index)
+      // 发送订阅事件删除
+      // PubSub.publish('deleteComment', index)
+      // 父级组件传递的func
+      deleteComment(index);
     }
   }
 
